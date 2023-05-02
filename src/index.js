@@ -38,9 +38,10 @@ export default class Header {
    *   api - Editor.js API
    *   readOnly - read only mode flag
    */
-  constructor({ data, config, api, readOnly }) {
+  constructor({ data, config, api, readOnly, block }) {
     this.api = api;
     this.readOnly = readOnly;
+    this.block = block;
 
     /**
      * Styles
@@ -295,6 +296,11 @@ export default class Header {
      * Make tag editable
      */
     tag.contentEditable = this.readOnly ? 'false' : 'true';
+    
+    /**
+     * Add anchor by id
+    */
+    tag.id = this.block.id;
 
     /**
      * Add Placeholder
